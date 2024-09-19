@@ -1,7 +1,7 @@
 name: node
 type: service
 icon: node
-title: Node
+title: Node.js
 hostname: node
 scalable: true
 labels:
