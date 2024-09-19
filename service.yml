@@ -30,6 +30,12 @@ endpoints:
 build:
   dockerfile: Dockerfile
   connect: true
+  templates:
+  - name: boilerplate
+    title: Next.js Boilerplate
+    repo: https://github.com/vercel/next.js
+    tag: ^14
+    pipeline: pipeline.yml
 
 helm:
   name: wodby
