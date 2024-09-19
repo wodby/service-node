@@ -3,26 +3,25 @@ version: 0.1
 workflows:
   main:
     jobs:
-    - build
+      - build
 
 jobs:
   build:
     steps:
-    - clone
+      - clone
 
-   - cache_restore:
-       path: node_modules
-       key: 'npm-{{ hash "package-lock.json" }}-v1'
+      - cache_restore:
+          path: node_modules
+          key: 'npm-{{ hash "package-lock.json" }}-v1'
 
-    - run: wget -qO- https://api.wodby.com/v1/get/cli | sh
-    - run: wodby ci init $WODBY_BUILD_ID
-    
-    - run: wodby ci run -s node -- npm i
-    - cache_save:
-      key: 'npm-{{ hash "package-lock.json" }}-v1'
-      path: node_modules
+      - run: wget -qO- https://api.wodby.com/v1/get/cli | sh
+      - run: wodby ci init $WODBY_BUILD_ID
 
-    - run: wodby ci build php
-    - run: wodby ci build nginx
-    - run: wodby ci release
-    - run: wodby ci deploy
+      - run: wodby ci run -s node -- npm i
+      - cache_save:
+        key: 'npm-{{ hash "package-lock.json" }}-v1'
+        path: node_modules
+
+      - run: wodby ci build node
+      - run: wodby ci release
+      - run: wodby ci deploy
