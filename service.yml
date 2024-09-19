@@ -28,8 +28,8 @@ endpoints:
     type: tcp
 
 links:
-- name: files
-  title: Files storage
+- name: storage
+  title: Storage
   required: false
   selectors:
   - type: storage
