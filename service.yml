@@ -131,3 +131,4 @@ helm:
     resources: resources
     volumes: volumes
     mounts: volumeMounts
+    command: command
