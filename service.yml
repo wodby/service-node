@@ -1,0 +1,46 @@
+name: node
+type: service
+icon: node
+title: Node
+hostname: node
+scalable: true
+labels:
+- node
+options:
+- version: '22'
+  default: true
+  eol: '2027-04-30T00:00:00+00:00'
+containers:
+- name: php
+  image: wodby/node
+  main: true
+#  resources:
+#    request:
+#       memory: 128
+#       cpu: 100
+
+endpoints:
+- name: node
+  ports:
+  - name: node
+    number: 3000
+    main: true
+    type: tcp
+
+build:
+  dockerfile: Dockerfile
+  connect: true
+
+helm:
+  name: wodby
+  source: oci://registry-1.docker.io/wodby/node
+  chart: oci://registry-1.docker.io/wodby/node
+  version: 0.1.0
+  configurations:
+  - name: node
+    labels: podLabels
+    annotations: podAnnotations
+    env: envVars
+    resources: resources
+    volumes: volumes
+    mounts: volumeMounts
