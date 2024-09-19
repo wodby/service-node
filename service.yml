@@ -96,15 +96,15 @@ links:
     - valkey   
 
 volumes:
-- name: files
-  title: Files
+- name: storage
   optional: true
+  title: Storage
+  link: storage
   shared: true
-  link: files
   path: /mnt/files
   import:
-    owner: 82
-    group: 82
+    owner: 1000
+    group: 1000
 
 build:
   dockerfile: Dockerfile
