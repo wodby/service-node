@@ -27,6 +27,74 @@ endpoints:
     main: true
     type: tcp
 
+links:
+- name: files
+  title: Files storage
+  required: false
+  selectors:
+  - type: storage
+- name: db
+  title: DBMS
+  required: false
+  env:
+  - name: DB_HOST
+    value: '{{link.database.host}}'
+  - name: DB_PORT
+    value: '{{link.database.port}}'
+  - name: DB_USERNAME
+    value: '{{link.database.user.name}}'
+  - name: DB_NAME
+    value: '{{link.database.db.name}}'
+  - name: DB_DATABASE
+    value: '{{link.database.db.name}}'    
+  - name: DB_PASSWORD
+    value: '{{link.database.user.password}}'
+    secret: true
+  - name: DB_DRIVER
+    value: '{{link.database.driver}}'  
+  - name: DB_CONNECTION
+    value: '{{link.database.driver}}'      
+  selectors:
+  - type: db
+    labels:
+    - mariadb
+  - type: db
+    labels:
+    - mysql
+  - type: db
+    labels:
+    - postgres
+- name: sendmail    
+  title: Mail Transfer Agent
+  required: false
+  env:
+  - name: SMTP_HOST
+    value: '{{link.host}}'
+  - name: SMTP_PORT
+    value: '{{link.port}}'
+  selectors:
+  - type: service
+    labels: 
+    - smtpd
+- name: redis
+  title: Redis
+  required: false
+  env:
+  - name: REDIS_PORT
+    value: '{{link.port}}'
+  - name: REDIS_HOST
+    value: '{{link.host}}'
+  - name: REDIS_PASSWORD
+    value: '{{link.tokens.password}}'
+    secret: true
+  selectors:
+  - type: datastore
+    labels:
+    - redis
+  - type: datastore
+    labels:
+    - valkey   
+
 build:
   dockerfile: Dockerfile
   connect: true
