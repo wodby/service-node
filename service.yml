@@ -110,7 +110,7 @@ build:
   dockerfile: Dockerfile
   connect: true
   templates:
-  - name: boilerplate
+  - name: nextjs
     title: Next.js Boilerplate
     repo: https://github.com/ixartz/Next-js-Boilerplate
     tag: ^v3
