@@ -30,11 +30,6 @@ endpoints:
     type: tcp
 
 links:
-- name: storage
-  title: Storage
-  required: false
-  selectors:
-  - type: storage
 - name: db
   title: DBMS
   required: false
@@ -96,17 +91,6 @@ links:
   - type: datastore
     labels:
     - valkey   
-
-volumes:
-- name: storage
-  optional: true
-  title: Storage
-  link: storage
-  shared: true
-  path: /mnt/files
-  import:
-    owner: 1000
-    group: 1000
 
 build:
   dockerfile: Dockerfile
