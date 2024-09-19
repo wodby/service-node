@@ -113,7 +113,7 @@ build:
   - name: boilerplate
     title: Next.js Boilerplate
     repo: https://github.com/ixartz/Next-js-Boilerplate
-    tag: ^14
+    tag: ^v3
     pipeline: pipeline.yml
 
 helm:
