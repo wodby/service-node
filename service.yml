@@ -95,6 +95,17 @@ links:
     labels:
     - valkey   
 
+volumes:
+- name: files
+  title: Files
+  optional: true
+  shared: true
+  link: files
+  path: /mnt/files
+  import:
+    owner: 82
+    group: 82
+
 build:
   dockerfile: Dockerfile
   connect: true
