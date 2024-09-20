@@ -27,7 +27,7 @@ endpoints:
   - name: node
     number: 3000
     main: true
-    type: tcp
+    type: http
 
 links:
 - name: db
