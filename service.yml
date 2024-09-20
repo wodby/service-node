@@ -95,6 +95,12 @@ links:
 build:
   dockerfile: Dockerfile
   connect: true
+  templates:
+  - name: express
+    title: Node Express Boilerplate
+    repo: https://github.com/hagopj13/node-express-boilerplate
+    branch: master
+    pipeline: pipeline.yml
 
 helm:
   name: wodby
