@@ -13,7 +13,7 @@ options:
 - version: '20'
   eol: '2026-04-30T00:00:00+00:00'  
 containers:
-- name: php
+- name: node
   image: wodby/node
   main: true
 #  resources:
