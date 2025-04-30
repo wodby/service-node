@@ -29,6 +29,10 @@ endpoints:
     main: true
     type: http
 
+env:
+- name: NODE_PORT
+  value: '3000'
+
 links:
 - name: db
   title: DBMS
