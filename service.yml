@@ -7,8 +7,9 @@ scalable: true
 labels:
 - node
 options:
+- version: '24'
+  default: true  
 - version: '22'
-  default: true
   eol: '2027-04-30T00:00:00+00:00'
 - version: '20'
   eol: '2026-04-30T00:00:00+00:00'  
