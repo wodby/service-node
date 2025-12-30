@@ -28,7 +28,7 @@ endpoints:
   - name: node
     number: 3000
     main: true
-    type: http
+    protocol: http
 
 env:
 - name: NODE_PORT
