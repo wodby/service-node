@@ -112,7 +112,7 @@ helm:
   chart: oci://registry-1.docker.io/wodby/node
   version: 0.2.0
   configurations:
-  - name: node
+  - container: node
     labels: podLabels
     annotations: podAnnotations
     env: envVars
