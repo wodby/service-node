@@ -7,20 +7,11 @@ labels:
 - node
 options:
 - version: '24'
-  default: true  
+  default: true
 - version: '22'
   eol: '2027-04-30T00:00:00+00:00'
 - version: '20'
-  eol: '2026-04-30T00:00:00+00:00'  
-containers:
-- name: node
-  image: wodby/node
-  main: true
-#  resources:
-#    request:
-#       memory: 128
-#       cpu: 100
-
+  eol: '2026-04-30T00:00:00+00:00'
 endpoints:
 - name: node
   ports:
@@ -47,14 +38,14 @@ links:
   - name: DB_NAME
     value: '{{link.database.db.name}}'
   - name: DB_DATABASE
-    value: '{{link.database.db.name}}'    
+    value: '{{link.database.db.name}}'
   - name: DB_PASSWORD
     value: '{{link.database.user.password}}'
     secret: true
   - name: DB_DRIVER
-    value: '{{link.database.driver}}'  
+    value: '{{link.database.driver}}'
   - name: DB_CONNECTION
-    value: '{{link.database.driver}}'      
+    value: '{{link.database.driver}}'
   selectors:
   - type: db
     labels:
@@ -65,7 +56,7 @@ links:
   - type: db
     labels:
     - postgres
-- name: sendmail    
+- name: sendmail
   title: Mail Transfer Agent
   required: false
   env:
@@ -75,7 +66,7 @@ links:
     value: '{{link.port}}'
   selectors:
   - type: service
-    labels: 
+    labels:
     - smtpd
 - name: redis
   title: Redis
@@ -94,14 +85,14 @@ links:
     - redis
   - type: datastore
     labels:
-    - valkey   
+    - valkey
 
 build:
   dockerfile: Dockerfile
   connect: true
   templates:
   - name: expressjs
-    title: Express.js boilerplate 
+    title: Express.js boilerplate
     repo: https://github.com/wodby/expressjs-boilerplate
     branch: main
 
@@ -110,12 +101,18 @@ helm:
   source: oci://registry-1.docker.io/wodby/node
   chart: oci://registry-1.docker.io/wodby/node
   version: 0.2.0
-  configurations:
-  - container: node
+workloads:
+- id: main
+  kind: deployment
+  primary: true
+  containers:
+  - name: node
+    image: wodby/node
+    helm:
+      resources: resources
+      env: envVars
+      mounts: extraVolumeMounts
+  helm:
     labels: podLabels
     annotations: podAnnotations
-    env: envVars
-    resources: resources
     volumes: extraVolumes
-    mounts: extraVolumeMounts
-
