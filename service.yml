@@ -113,6 +113,7 @@ workloads:
   containers:
   - name: node
     image: wodby/node
+    build: true
     helm:
       resources: resources
       env: envVars
