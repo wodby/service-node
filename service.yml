@@ -101,10 +101,15 @@ helm:
   source: oci://registry-1.docker.io/wodby/node
   chart: oci://registry-1.docker.io/wodby/node
   version: 0.2.0
+
 workloads:
 - id: main
   kind: deployment
   primary: true
+  helm:
+    labels: podLabels
+    annotations: podAnnotations
+    volumes: extraVolumes
   containers:
   - name: node
     image: wodby/node
@@ -112,7 +117,3 @@ workloads:
       resources: resources
       env: envVars
       mounts: extraVolumeMounts
-  helm:
-    labels: podLabels
-    annotations: podAnnotations
-    volumes: extraVolumes
