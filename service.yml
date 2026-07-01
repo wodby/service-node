@@ -8,10 +8,14 @@ labels:
 options:
 - version: '24'
   default: true
+  eol: '2028-04-30T00:00:00+00:00'
+  tag: 24-1.70.0
 - version: '22'
   eol: '2027-04-30T00:00:00+00:00'
+  tag: 22-1.70.0
 - version: '20'
   eol: '2026-04-30T00:00:00+00:00'
+  tag: 20-1.70.0
 endpoints:
 - name: node
   ports:
