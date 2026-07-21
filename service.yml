@@ -6,8 +6,11 @@ scalable: true
 labels:
 - node
 options:
-- version: '24'
+- version: '26'
   default: true
+  eol: '2029-04-30T00:00:00+00:00'
+  tag: 26-1.71.0
+- version: '24'
   eol: '2028-04-30T00:00:00+00:00'
   tag: 24-1.70.0
 - version: '22'
