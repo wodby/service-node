@@ -1,12 +1,24 @@
-# Node.js service for Wodby
+# Node.js service for Kubernetes on Wodby
 
-Use Node.js as a reusable component in applications managed by Wodby. This
-repository contains the service manifests and referenced files used by the
-public Node.js service in the Wodby catalog.
+Build and run Node.js applications on Kubernetes with Wodby.
 
-- [Node.js service in the Wodby catalog](https://wodby.com/services/node)
+This repository defines the Wodby service manifests and operational
+configuration for Node.js.
+
+- [Browse Wodby services](https://wodby.com/services)
 - [Wodby service documentation](https://wodby.com/docs/2.0/services/)
 - [Service manifest reference](https://wodby.com/docs/2.0/services/template/)
+
+## Start with a template
+
+Use one of the source templates exposed by this service to start with
+compatible build configuration and Wodby CI:
+
+- [Express.js boilerplate](https://github.com/wodby/expressjs-boilerplate)
+
+## Wodby stacks using this service
+
+- [Node.js application stack](https://github.com/wodby/stack-node)
 
 ## Service overview
 
@@ -24,38 +36,28 @@ public Node.js service in the Wodby catalog.
 
 ## Use this service
 
-A service is a reusable component and does not deploy by itself. Add the public
-catalog service to a stack, configure its required links and settings, publish
-the stack, and then create or upgrade an app instance.
+Use this service through [Node.js application stack](https://github.com/wodby/stack-node), or reference `node` from a custom
+Wodby stack.
 
-To maintain your own version of this service:
+A service is a reusable component and does not deploy by itself. The stack
+defines its links, settings, versions, resources, and relationship to the rest
+of the application.
+
+## Maintain a custom version
 
 1. Fork this repository.
-2. Edit the service manifest and any files it references.
-3. Import the repository as a
-   [Git-backed service](https://wodby.com/docs/2.0/services/create/#create-a-git-backed-service).
-4. Reference `node` from your stack manifest.
-
-Wodby imports the manifest and referenced files from the selected Git branch or
-tag and creates a new service revision when the Git-backed service is updated.
-
-## Customize the service
-
-Common changes include adjusting versions, images, Helm chart settings, build
-inputs, environment variables, links, storage, resources, and operational
-workflows supported by the manifest.
+2. Edit the service manifest and referenced files.
+3. Import the repository as a [Git-backed service](https://wodby.com/docs/2.0/services/create/#create-a-git-backed-service).
+4. Reference the service from a stack manifest.
 
 Keep service, workload, container, endpoint, link, volume, config, and
 derivative names stable unless dependent stacks and app-level overrides are
-updated at the same time. These names are part of the contract consumed by
-downstream manifests.
+updated at the same time.
 
-Validate customized manifests with the Wodby CLI before importing them:
+Validate the manifests with:
 
 ```bash
 wodby service validate-manifest service.yml --org <org-id>
 ```
 
-See the [service manifest reference](https://wodby.com/docs/2.0/services/template/)
-for every supported field and the [managed services
-index](https://github.com/wodby/services) for more service examples.
+See the [service manifest reference](https://wodby.com/docs/2.0/services/template/) and the [managed services index](https://github.com/wodby/services).
