@@ -30,6 +30,21 @@ endpoints:
 env:
 - name: NODE_PORT
   value: '3000'
+- name: NODE_ENV
+  value: production
+  envType: prod
+- name: NODE_ENV
+  value: development
+  envType: dev
+- name: NODE_ENV
+  value: production
+  envType: staging
+- name: NODE_ENV
+  value: production
+  envType: test
+- name: NODE_ENV
+  value: production
+  envType: feature
 
 links:
 - name: db
