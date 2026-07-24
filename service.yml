@@ -112,7 +112,7 @@ links:
 build:
   dockerfile: Dockerfile
   connect: true
-  templates:
+  boilerplates:
   - name: expressjs
     title: Express.js boilerplate
     repo: https://github.com/wodby/expressjs-boilerplate

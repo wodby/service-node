@@ -9,10 +9,10 @@ configuration for Node.js.
 - [Wodby service documentation](https://wodby.com/docs/2.0/services/)
 - [Service manifest reference](https://wodby.com/docs/2.0/services/template/)
 
-## Start with a template
+## Start with a boilerplate
 
-Use one of the source templates exposed by this service to start with
-compatible build configuration and Wodby CI:
+Use one of the boilerplates exposed by this service to start with compatible
+build configuration and Wodby CI:
 
 - [Express.js boilerplate](https://github.com/wodby/expressjs-boilerplate)
 
@@ -31,7 +31,7 @@ compatible build configuration and Wodby CI:
 | Containers | `node` using `wodby/node`, build target |
 | Endpoints | `node`: HTTP 3000 (main) |
 | Service links | DBMS (`db`), optional, Mail Transfer Agent (`sendmail`), optional, Redis, optional |
-| Application build | Git source connection enabled; Dockerfile: `Dockerfile`; starters: Express.js boilerplate |
+| Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: Express.js boilerplate |
 | Helm | chart `oci://registry-1.docker.io/wodby/node`; version `0.2.0` |
 
 ## Use this service
