@@ -125,6 +125,7 @@ helm:
   version: 0.2.1
   valueMappings:
     serviceAccountName: serviceAccount.name
+    serviceAccountCreate: serviceAccount.create
 
 workloads:
 - name: main
