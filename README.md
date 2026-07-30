@@ -32,7 +32,7 @@ build configuration and Wodby CI:
 | Endpoints | `node`: HTTP 3000 (main) |
 | Service links | DBMS (`db`), optional, Mail Transfer Agent (`sendmail`), optional, Redis, optional |
 | Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: Express.js boilerplate |
-| Helm | chart `oci://registry-1.docker.io/wodby/node`; version `0.2.1` |
+| Helm | chart `oci://registry-1.docker.io/wodby/node`; version `0.2.2` |
 
 ## Use this service
 
