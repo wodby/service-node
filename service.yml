@@ -130,7 +130,7 @@ helm:
   name: wodby
   source: oci://registry-1.docker.io/wodby/node
   chart: oci://registry-1.docker.io/wodby/node
-  version: 0.3.0
+  version: 0.3.1
   valueMappings:
     serviceAccountName: serviceAccount.name
     serviceAccountCreate: serviceAccount.create
