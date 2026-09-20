@@ -26,13 +26,13 @@ build configuration and Wodby CI:
 | --- | --- |
 | Service name | `node` |
 | Type | Application service |
-| Versions | `26` by default; also available: `24`, `22`, `20` |
+| Versions | `26` by default; also available: `24`, `22` |
 | Workloads | `main` (Deployment), primary; scalable |
 | Containers | `node` using `wodby/node`, build target |
 | Endpoints | `node`: HTTP 3000 (main) |
 | Service links | DBMS (`db`), optional, Mail Transfer Agent (`sendmail`), optional, Redis, optional |
 | Application build | Git source connection enabled; Dockerfile: `Dockerfile`; boilerplates: Express.js boilerplate |
-| Helm | chart `oci://registry-1.docker.io/wodby/node`; version `0.3.1` |
+| Helm | chart `oci://registry-1.docker.io/wodby/node`; version `0.3.2` |
 
 ## Use this service
 
