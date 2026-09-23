@@ -9,16 +9,16 @@ options:
 - version: '26'
   default: true
   eol: '2029-04-30T00:00:00+00:00'
-  tag: 26-r3
-  devTag: 26-dev-r3
+  tag: 26-r4
+  devTag: 26-dev-r4
 - version: '24'
   eol: '2028-04-30T00:00:00+00:00'
-  tag: 24-r3
-  devTag: 24-dev-r3
+  tag: 24-r4
+  devTag: 24-dev-r4
 - version: '22'
   eol: '2027-04-30T00:00:00+00:00'
-  tag: 22-r3
-  devTag: 22-dev-r3
+  tag: 22-r4
+  devTag: 22-dev-r4
 endpoints:
 - name: node
   ports:
