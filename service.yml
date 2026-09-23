@@ -154,3 +154,26 @@ workloads:
       resources: resources
       env: envVars
       mounts: extraVolumeMounts
+
+# Project package scripts select the development server; the image handles managers.
+workspace:
+  runner:
+    workload: main
+    container: node
+    workingDirectory: /usr/src/app
+    homeDirectory: /home/node
+    username: node
+    uid: 1000
+    gid: 1000
+    port: 2222
+    command: [sudo, /usr/sbin/sshd, -D, -e, -f, /dev/null]
+  mounts:
+  - name: code
+    workload: main
+    container: node
+    path: /usr/src/app
+  preparation:
+  - name: dependencies
+    command: [workspace-node, prepare]
+    timeoutSeconds: 1800
+  reload: restart
