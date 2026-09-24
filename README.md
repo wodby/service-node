@@ -61,3 +61,47 @@ wodby service validate-manifest service.yml --org <org-id>
 ```
 
 See the [service manifest reference](https://wodby.com/docs/2.0/services/template/) and the [managed services index](https://github.com/wodby/services).
+
+## Development workspaces
+
+Workspace support uses the development image and a persistent checkout at
+`/usr/src/app`. Preparation installs development dependencies with npm, Yarn, or
+pnpm, using the repository's `packageManager` field or lockfile. Pin Yarn/pnpm in
+`packageManager` for reproducible setup.
+
+Startup runs the project's `dev` script, falling back to `start`. Set the service
+environment variable `WORKSPACE_NODE_COMMAND` to override that command, for example
+`workspace-node vite-start` for a Vite project. The
+command executes in the repository root. Dependencies are installed on preparation,
+not on every restart. Projects without a watcher need an application service restart
+after edits; restarting the SSH runner does not restart the application.
+
+The server must listen on `0.0.0.0:3000`. The runtime exports `PORT=3000` and
+`HOST=0.0.0.0` by default, but frameworks may require explicit command flags:
+
+| Project | Example workspace command |
+| --- | --- |
+| Next.js | `workspace-node next-start` |
+| React or Vue with Vite | `workspace-node vite-start` |
+| Angular | `workspace-node angular-start` |
+
+Allow the actual preview hostname in the framework's development-server configuration.
+For Vite, `__VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS` adds explicit hostnames. Preserve
+host checks. Test live reload through the preview's HTTPS/WebSocket connection;
+network filesystems may require project-specific polling configuration.
+
+These frameworks share the Node runtime; they do not require separate SSH services.
+Production builds and their startup commands remain separate from workspace startup.
+
+Workspace-capable runtime images must declare `com.wodby.workspace.contract=1`.
+The runtime defaults Chokidar/Watchpack to 1000 ms polling; configure other watchers
+explicitly. Polling costs CPU, so exclude dependencies and generated build output.
+For Next.js shared-volume development use `workspace-node next-start`, or a custom
+Webpack-based command with polling. Generic Node continues to advertise restart
+semantics because arbitrary project scripts may not have a watcher.
+
+The framework helpers run the installed framework directly, bypassing custom npm
+lifecycle scripts. `vite-start` loads the project's Vite config and enables both
+Chokidar and Rolldown polling without modifying config files. `angular-start` passes
+`--poll` to the Angular CLI. Use a custom command if additional project setup is
+needed, with equivalent polling configured explicitly.
