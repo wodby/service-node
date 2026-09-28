@@ -176,4 +176,7 @@ workspace:
   - name: dependencies
     command: [workspace-node, prepare]
     timeoutSeconds: 1800
+  # Keeps installed packages out of Git status. pnpm puts its store at the root
+  # of the checkout's volume because the home is on another one.
+  ignore: ['node_modules/', '/.pnpm-store/']
   reload: restart
