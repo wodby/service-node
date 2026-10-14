@@ -73,8 +73,10 @@ Startup runs the project's `dev` script, falling back to `start`. Set the servic
 environment variable `WORKSPACE_NODE_COMMAND` to override that command, for example
 `workspace-node vite-start` for a Vite project. The
 command executes in the repository root. Dependencies are installed on preparation,
-not on every restart. Projects without a watcher need an application service restart
-after edits; restarting the SSH runner does not restart the application.
+not on every restart. A `dev` script is expected to watch the files itself. For a
+`start` script, `workspace-node` watches the checkout and restarts the application in
+the same container when a file changes. `WORKSPACE_NODE_WATCH=0` turns that off, and a
+`WORKSPACE_NODE_COMMAND` is run as it is, without that watcher.
 
 The server must listen on `0.0.0.0:3000`. The runtime exports `PORT=3000` and
 `HOST=0.0.0.0` by default, but frameworks may require explicit command flags:
@@ -97,8 +99,7 @@ Workspace-capable runtime images must declare `com.wodby.workspace.contract=1`.
 The runtime defaults Chokidar/Watchpack to 1000 ms polling; configure other watchers
 explicitly. Polling costs CPU, so exclude dependencies and generated build output.
 For Next.js shared-volume development use `workspace-node next-start`, or a custom
-Webpack-based command with polling. Generic Node continues to advertise restart
-semantics because arbitrary project scripts may not have a watcher.
+Webpack-based command with polling.
 
 The framework helpers run the installed framework directly, bypassing custom npm
 lifecycle scripts. `vite-start` loads the project's Vite config and enables both

@@ -10,16 +10,16 @@ options:
 - version: '26'
   default: true
   eol: '2029-04-30T00:00:00+00:00'
-  tag: 26-r5
-  devTag: 26-dev-r5
+  tag: 26-r7
+  devTag: 26-dev-r7
 - version: '24'
   eol: '2028-04-30T00:00:00+00:00'
-  tag: 24-r5
-  devTag: 24-dev-r5
+  tag: 24-r7
+  devTag: 24-dev-r7
 - version: '22'
   eol: '2027-04-30T00:00:00+00:00'
-  tag: 22-r5
-  devTag: 22-dev-r5
+  tag: 22-r7
+  devTag: 22-dev-r7
 endpoints:
 - name: node
   ports:
@@ -180,4 +180,6 @@ workspace:
   # Keeps installed packages out of Git status. pnpm puts its store at the root
   # of the checkout's volume because the home is on another one.
   ignore: ['node_modules/', '/.pnpm-store/']
-  reload: restart
+  # A dev script watches the files itself; for a start script, workspace-node
+  # watches the checkout and restarts the application when a file changes.
+  reload: watch
