@@ -165,6 +165,10 @@ workloads:
   containers:
   - name: node
     image: wodby/node
+    resources:
+      request:
+        cpu: 10
+        memory: 160
     build: true
     helm:
       resources: resources
