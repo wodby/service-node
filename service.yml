@@ -11,15 +11,21 @@ options:
   default: true
   eol: '2029-04-30T00:00:00+00:00'
   tag: 26-r14
+  digest: sha256:b09908db2e98772b4d90f36f85276279ff228a89eb1754182b7b25047cf9a84a
   devTag: 26-dev-r14
+  devDigest: sha256:37b24a1b1b8e1b01a29b70d2c1369548d096a0c143aae4ae67891cf6324497d0
 - version: '24'
   eol: '2028-04-30T00:00:00+00:00'
   tag: 24-r14
+  digest: sha256:708522a237892f54143ab453573b32cf764b29dff2276e87c352c0cda3f83f1e
   devTag: 24-dev-r14
+  devDigest: sha256:5cc6ae8d0ebd22cff8342d4419b32d5b238e53afbdc461c24b9a3035f8bdd383
 - version: '22'
   eol: '2027-04-30T00:00:00+00:00'
   tag: 22-r14
+  digest: sha256:8e176664eeb74a78156f3e7fcba33799027baacf518a1fa79a537e405ccde05a
   devTag: 22-dev-r14
+  devDigest: sha256:f6a0422933cfa7a0aa5d43c991a95ecb235edc2b45e779342fbad463d3b22001
 endpoints:
 - name: node
   ports:
